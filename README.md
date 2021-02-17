@@ -9,10 +9,6 @@ The original version 1.1 was written by Arnaud Le-Fur of ENIB Brest in 2014 with
 As a prerequisite, it is advisable to install conda.
 Conda is a powerful package manager and environment manager that you use with command line commands at the Anaconda Prompt for Windows, or in a terminal window for macOS or Linux.
 
-### Install miniconda
-
-Download 64 bit version from: <https://docs.conda.io/en/latest/miniconda.html>
-
 ### Set up the virtual environment
 
 Type conda search “^python$”  to see the list of available python versions.
@@ -34,10 +30,17 @@ conda create -n Mooring python=2.7.13 anaconda
 conda activate Mooring
 ```
 
+### Install PyQt4
+
+
+``` bash
+pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
+```
+
 ### Install additional Python packages to a virtual environment
 
 ``` bash
-conda install -n Mooring Qt4 matplotlib tkinter reportlab xlrd 
+conda install -n Mooring  matplotlib tkinter reportlab xlrd 
 ```
 
 ### Deactivate your virtual environment
