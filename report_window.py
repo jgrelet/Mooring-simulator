@@ -9,7 +9,7 @@ from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.rl_config import defaultPageSize
-from reportlab.lib.pagesizes import cm
+from reportlab.lib.pagesizes import mm as cm
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.lib import colors
 

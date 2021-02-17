@@ -4,8 +4,6 @@
 #                                                                      ##
 #########################################################################
 
-
-
 import sys
 from PyQt4 import QtCore,QtGui
 
@@ -154,7 +152,6 @@ class Mooring_Simulator(QtGui.QMainWindow):
         self.mooring_wind = MooringWindow(self.Defaut_folder,self.screen_width)
         self.zoneCentrale.addTab(self.mooring_wind,file_name)
         self.zoneCentrale.setCurrentWidget(self.mooring_wind)
-        #Update la bibliothèque
         self.create_library_wind(self.Defaut_folder)
         self.library_dockwidget.hide()
     
@@ -397,8 +394,8 @@ class Mooring_Simulator(QtGui.QMainWindow):
         self.library_dockwidget.hide()
         fileName = QtGui.QFileDialog.getOpenFileName(self, ("Open File"),"/home",("Spreadsheet  (*.xls)"));   
         self.create_library_wind(fileName)          
-        self.Defaut_folder=fileName
-        if hasattr(self,"mooring_wind"):                                                            #On actualise la bibliothèque du mouillage en cours
+        self.Defaut_folder=fileNam
+        if hasattr(self,"mooring_wind"):              #On actualise la bibliotheque du mouillage en cours
             self.mooring_wind.default_folder=self.Defaut_folder
             self.mooring_wind.refresh_library()
                 
