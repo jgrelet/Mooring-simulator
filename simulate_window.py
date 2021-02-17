@@ -3,12 +3,12 @@
 ##Edited by Arnaud Le Fur, IFREMER                                       ####           
 #############################################################################
 
-from PyQt5 import QtGui, QtWidgets
+from PyQt4 import QtGui
 import copy
 import numpy as np
 from math import cos,sin,atan, sqrt
 from mySimulateCanvas import MySimulateCanvas 
-class Simulate_wind(QtWidgets.QWidget):
+class Simulate_wind(QtGui.QWidget):
     """Classe contenant la fenetre de simulation """
     def __init__(self, data, parent=None):
         """initialisation, calcul et affichage des resultats de la simulation

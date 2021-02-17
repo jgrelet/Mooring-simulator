@@ -5,7 +5,7 @@
 ##Edited by Arnaud Le Fur, IFREMER
 #############################################################################
 
-from PyQt5 import QtGui
+from PyQt4 import QtGui
 import numpy as np
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure

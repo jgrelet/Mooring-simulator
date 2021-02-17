@@ -5,10 +5,10 @@
 
 
 from myEnvironnementCanvas import MyEnvironnementCanvas
-from PyQt5 import QtGui, QtWidgets
+from PyQt4 import QtGui
 import functools
 
-class Environnement_wind(QtWidgets.QMdiArea):
+class Environnement_wind(QtGui.QMdiArea):
     """Cette classe genere la fenetre de definitions des contraintes environnementales """
     def __init__(self):
         """Initialisation de la fenetre et des boutons """
@@ -17,7 +17,7 @@ class Environnement_wind(QtWidgets.QMdiArea):
         self.liste_point=[]
         self.param_saved=0
         #Premier onglet#
-        self.window_1=QtWidgets.QWidget()
+        self.window_1=QtGui.QWidget()
         self.subwindow_1=self.addSubWindow(self.window_1)
         self.subwindow_1.setWindowTitle('Define surface / bottom')
         self.subwindow_1.setWindowIcon(QtGui.QIcon('exit24.png'))

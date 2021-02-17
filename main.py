@@ -7,7 +7,7 @@
 
 
 import sys
-from PyQt5 import QtCore,QtGui, QtWidgets
+from PyQt4 import QtCore,QtGui
 
 from library_window import Library_wind
 #from preference_window import Preference_wind
@@ -17,7 +17,7 @@ from new_mooring_window import MooringWindow
 from simulate_window import Simulate_wind
 import myQDockWidget
 from os import getcwd
-from tkinter import Tk
+from Tkinter import Tk
 import copy
 
 from reportlab.pdfbase import _fontdata_enc_winansi
@@ -42,7 +42,7 @@ from reportlab.pdfbase import _fontdata_widths_timesbolditalic
 from reportlab.pdfbase import _fontdata_widths_symbol
 from reportlab.pdfbase import _fontdata_widths_zapfdingbats
 
-class Mooring_Simulator(QtWidgets.QMainWindow):
+class Mooring_Simulator(QtGui.QMainWindow):
     """Classe definissant la fenetre principale"""
     
     def __init__(self,parent=None):
@@ -55,7 +55,7 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
         #Recupere le chemin du fichier#
         self.mypath=getcwd()
         self.Defaut_folder=self.mypath+'\Library\Library.xls'
-        self.zoneCentrale = QtWidgets.QTabWidget()
+        self.zoneCentrale = QtGui.QTabWidget()
         self.zoneCentrale.setTabsClosable(True)
         self.setCentralWidget(self.zoneCentrale)
         #Creation des fenetres preferences, environnement, bibliotheque
@@ -698,7 +698,7 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
         
 def main():
     
-    app = QtWidgets.QApplication(sys.argv)
+    app = QtGui.QApplication(sys.argv)
     app.setWindowIcon(QtGui.QIcon('main_icon.png'))
     ex=Mooring_Simulator()
     sys.exit(app.exec_())

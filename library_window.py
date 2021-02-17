@@ -8,11 +8,11 @@
 #-*- coding: utf-8 -*-
 
 import xlrd
-from PyQt5 import QtGui, QtWidgets
+from PyQt4 import QtGui
 import functools
 from os import getcwd,startfile
 
-class Library_wind(QtWidgets.QWidget):
+class Library_wind(QtGui.QWidget):
     '''Classe creant la fenetre de bibliotheque a partir du chemin en input '''
     
     def __init__(self,name):

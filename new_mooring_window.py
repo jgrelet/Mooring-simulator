@@ -4,13 +4,13 @@
 ##new_mooring_window.py creates the mooring window and its toolbox       ####
 #############################################################################
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt4 import QtCore, QtGui
 import functools
 import library_window
 import xlrd
 from os import getcwd
 
-class MooringWidget(QtWidgets.QWidget):
+class MooringWidget(QtGui.QWidget):
     """Cette classe definit la partie gauche de l ecran de creation du mouillage : l espace de travail """
     def __init__(self, parent=None):
         super(MooringWidget, self).__init__(parent)
@@ -525,7 +525,7 @@ class MooringWidget(QtWidgets.QWidget):
                 
                   
                   
-class ObjectList(QtWidgets.QListWidget):
+class ObjectList(QtGui.QListWidget):
     """Cette classe definit une liste de Widget, une instance de cette classe est creee pour chaque type d objet, 
     les objets apparaissent sous formes d icones """
     def __init__(self, parent=None):
@@ -583,7 +583,7 @@ class ObjectList(QtWidgets.QListWidget):
             a=2
         
             
-class MooringWindow(QtWidgets.QWidget):
+class MooringWindow(QtGui.QWidget):
     """Cette fonction defini la fenetre globale """
     def __init__(self, default_folder,screen_width, parent=None):
         """Initialisation de la fenetre 

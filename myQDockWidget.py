@@ -6,9 +6,9 @@
 #############################################################################
 
 
-from PyQt5 import QtGui, QtWidgets
+from PyQt4 import QtGui
 
-class myQDockWidget(QtWidgets.QDockWidget):
+class myQDockWidget(QtGui.QDockWidget):
     '''Cette classe permet de surdefinir la fonction close '''
     
     def __init__(self,parent=None):
