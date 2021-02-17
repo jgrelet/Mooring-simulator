@@ -11,7 +11,7 @@ Conda is a powerful package manager and environment manager that you use with co
 
 ### Install miniconda
 
-Download 64 bit version from: https://docs.conda.io/en/latest/miniconda.html
+Download 64 bit version from: <https://docs.conda.io/en/latest/miniconda.html>
 
 ### Set up the virtual environment
 
@@ -40,7 +40,7 @@ conda activate Mooring
 conda install -n Mooring Qt4 matplotlib tkinter reportlab xlrd 
 ```
 
-### Deactivate your virtual environment.
+### Deactivate your virtual environment
 
 ``` bash
 conda deactivate
