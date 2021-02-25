@@ -32,7 +32,6 @@ conda activate Mooring
 
 ### Install PyQt4
 
-
 ``` bash
 pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
 ```
@@ -40,7 +39,8 @@ pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
 ### Install additional Python packages to a virtual environment
 
 ``` bash
-conda install -n Mooring  matplotlib tkinter reportlab xlrd 
+conda install -n Mooring  matplotlib reportlab xlrd pyinstaller 
+conda install -n Mooring  sasview py2exe  
 ```
 
 ### Deactivate your virtual environment
@@ -48,6 +48,31 @@ conda install -n Mooring  matplotlib tkinter reportlab xlrd
 ``` bash
 conda deactivate
 ```
+
+## Modification for original sources
+
+### Remove Tkinter import
+
+The original program imported the Tkinter module only to retrieve the screen dimensions from the main.py file.
+Import deleted and replaced by Tk functions.
+For example, how to test that the Tk library is correctly installed:
+
+Running `python -m Tkinter` from the command line should open a window demonstrating a simple Tk interface, letting you know that Tkinter is properly installed on your system, and also showing what version of Tcl/Tk is installed, so you can read the Tcl/Tk documentation specific to that version <https://docs.python.org/2/library/tkinter.html>.
+
+### Replace module py2exe by pyinstaller
+
+Instead of using py2exe you could try to build your executable with pyinstaller.
+
+``` bash
+pyinstaller -wF --clean main.py
+```
+
+If you still want to use py2exe with the setup.py file, you have to install a version of py2exe compatible with python 2.7.
+
+``` bash
+conda install -n Mooring -c sasview py2exe
+```
+
 
 ## Compilation under Python3 and Qt5 (work under progress)
 
