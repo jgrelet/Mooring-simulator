@@ -15,7 +15,6 @@ from new_mooring_window import MooringWindow
 from simulate_window import Simulate_wind
 import myQDockWidget
 from os import getcwd
-from Tkinter import Tk
 import copy
 
 from reportlab.pdfbase import _fontdata_enc_winansi
@@ -40,19 +39,23 @@ from reportlab.pdfbase import _fontdata_widths_timesbolditalic
 from reportlab.pdfbase import _fontdata_widths_symbol
 from reportlab.pdfbase import _fontdata_widths_zapfdingbats
 
+app = QtGui.QApplication([])
+
 class Mooring_Simulator(QtGui.QMainWindow):
     """Classe definissant la fenetre principale"""
     
     def __init__(self,parent=None):
         """Initialisation des differentes fenetre """
         super(Mooring_Simulator, self).__init__(parent)
-        #Recupere resolution de lecran#
-        root = Tk()
-        self.screen_width = root.winfo_screenwidth()
-        self.screen_height = root.winfo_screenheight()
-        #Recupere le chemin du fichier#
+        # get the screen resolution
+        # https://www.blog.pythonlibrary.org/2015/08/18/getting-your-screen-resolution-with-python/
+        screen_resolution = app.desktop().screenGeometry()
+        self.screen_width, self.screen_height = screen_resolution.width(), screen_resolution.height()
+        #self.screen_width, self.screen_height = 800,600
+        print( self.screen_width, self.screen_height )
+        # get the current path
         self.mypath=getcwd()
-        self.Defaut_folder=self.mypath+'\Library\Library.xls'
+        self.Defaut_folder = self.mypath+'\Library\Library.xls'
         self.zoneCentrale = QtGui.QTabWidget()
         self.zoneCentrale.setTabsClosable(True)
         self.setCentralWidget(self.zoneCentrale)
@@ -394,7 +397,7 @@ class Mooring_Simulator(QtGui.QMainWindow):
         self.library_dockwidget.hide()
         fileName = QtGui.QFileDialog.getOpenFileName(self, ("Open File"),"/home",("Spreadsheet  (*.xls)"));   
         self.create_library_wind(fileName)          
-        self.Defaut_folder=fileNam
+        self.Defaut_folder=fileName
         if hasattr(self,"mooring_wind"):              #On actualise la bibliotheque du mouillage en cours
             self.mooring_wind.default_folder=self.Defaut_folder
             self.mooring_wind.refresh_library()
