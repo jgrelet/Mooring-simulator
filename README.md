@@ -66,6 +66,12 @@ Instead of using py2exe you could try to build your executable with pyinstaller:
 pyinstaller -wF --clean main.py
 ```
 
+You can then launch the executable from the dist directory:
+
+``` dos
+Mooring-simulator\dist\main.exe
+```
+
 If you still want to use py2exe with the setup.py file, you have to install a version of py2exe compatible with python 2.7.
 
 ``` bash
