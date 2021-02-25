@@ -40,7 +40,6 @@ pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
 
 ``` bash
 conda install -n Mooring  matplotlib reportlab xlrd pyinstaller 
-conda install -n Mooring  sasview py2exe  
 ```
 
 ### Deactivate your virtual environment
@@ -49,7 +48,7 @@ conda install -n Mooring  sasview py2exe
 conda deactivate
 ```
 
-## Modification for original sources
+## Modifications for original sources
 
 ### Remove Tkinter import
 
@@ -61,7 +60,7 @@ Running `python -m Tkinter` from the command line should open a window demonstra
 
 ### Replace module py2exe by pyinstaller
 
-Instead of using py2exe you could try to build your executable with pyinstaller.
+Instead of using py2exe you could try to build your executable with pyinstaller:
 
 ``` bash
 pyinstaller -wF --clean main.py
@@ -72,7 +71,6 @@ If you still want to use py2exe with the setup.py file, you have to install a ve
 ``` bash
 conda install -n Mooring -c sasview py2exe
 ```
-
 
 ## Compilation under Python3 and Qt5 (work under progress)
 
