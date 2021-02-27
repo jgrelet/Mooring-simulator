@@ -25,7 +25,7 @@ class MyEnvironnementCanvas(FigureCanvas):
         #marge a gauche, a droite, largeur, hauteur
         self.axes = fig.add_axes([0.15, 0.25, 0.8, 0.5])
         
-        self.axes.hold(False)
+        #self.axes.hold(False)
        
         FigureCanvas.__init__(self, fig)
         self.setParent(parent)

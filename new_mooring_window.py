@@ -384,7 +384,8 @@ class MooringWidget(QtGui.QWidget):
         font.setPixelSize(k)  
         #On cherche d abord l image la plus large car tout le mouillage sera centre par rapport a celle-ci#
         for i in range(len(self.liste_element)):
-            print(i,self.liste_element[i])
+            # add debug
+            # print(i,self.liste_element[i])
             if type(self.liste_element[i][0])!=int:
                 path=self.mypath+self.tab_object[self.liste_element[i][0][0]][self.liste_element[i][0][1]].image_file
                 a=0.75*k*len(self.tab_object[self.liste_element[i][0][0]][self.liste_element[i][0][1]].name)

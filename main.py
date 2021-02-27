@@ -52,7 +52,8 @@ class Mooring_Simulator(QtGui.QMainWindow):
         screen_resolution = app.desktop().screenGeometry()
         self.screen_width, self.screen_height = screen_resolution.width(), screen_resolution.height()
         #self.screen_width, self.screen_height = 800,600
-        print( self.screen_width, self.screen_height )
+        # add debug
+        # print( self.screen_width, self.screen_height )
         # get the current path
         self.mypath=getcwd()
         self.Defaut_folder = self.mypath+'\Library\Library.xls'
