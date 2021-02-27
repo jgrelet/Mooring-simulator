@@ -133,3 +133,4 @@ dmypy.json
 *.swp
 .~lock*
 .vscode
+Report/Pictures/*.png
