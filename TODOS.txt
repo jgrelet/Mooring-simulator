@@ -1,0 +1,22 @@
+TODOS:
+
+- Les parametres de simulation ne sont pas sauvegardés.
+- Idem pour les profils de courants
+- Il faudrait pouvoir entrer un profil de courant issu de modele
+- Remplacer le tableau data par un dictionnaire dans simulate_windows.py
+
+ERRORS:
+
+- File "C:\git\Python\Mooring-simulator\simulate_window.py", line 299, in get_buoyancy_kg        
+    self.Buoyancy_kg = [self.weight_kg[release_ind]]
+
+- libpng warning: iCCP: known incorrect sRGB profile
+1.  Installer imagemagick
+2. Aller dans le dossier des images png en question, ouvrir une console et taper la commande:	
+find . -type f -name "*.png" -exec convert {} -strip {} \;
+
+- C:\git\Python\Mooring-simulator\myEnvironnementCanvas.py:30: MatplotlibDeprecationWarning: axes.hold 
+    is deprecated.
+    See the API Changes document (http://matplotlib.org/api/api_changes.html)
+    for more details.
+  self.axes.hold(False)
