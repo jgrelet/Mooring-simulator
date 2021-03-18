@@ -1,3 +1,25 @@
+# Created by https://www.gitignore.io/api/visualstudiocode
+# Edit at https://www.gitignore.io/?templates=visualstudiocode
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
+# In the above .gitignore file, the .vscode/* line says to exclude 
+# everything in the .vscode folder, but then the !.vscode/a_specific_file 
+# lines tell git to "not" ignore some specific files in that folder
+#  (settings.json, launch.json, etc.). The end result is that everything
+#  is excluded in the .vscode folder except for the files specifically 
+#  named in one of those other lines.
+
+# End of https://www.gitignore.io/api/visualstudiocode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
