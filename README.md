@@ -30,10 +30,10 @@ conda create -n Mooring python=2.7.13 anaconda
 conda activate Mooring
 ```
 
-### Install PyQt4
+### Install PyQt5
 
 ``` bash
-pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
+pip install -i https://pypi.anaconda.org/ales-erjavec/simple PyQt5
 ```
 
 ### Install additional Python packages to a virtual environment

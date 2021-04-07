@@ -3,7 +3,7 @@
 #Edited by Arnaud Le Fur, IFREMER                                       #
 #########################################################################
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 from os import startfile,rename,remove
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph, Table, TableStyle
@@ -17,7 +17,7 @@ import time
 
 
 
-class Report_wind(QtGui.QWidget):
+class Report_wind(QtWidgets.QWidget):
     """Cette classe permet de generer automatiquement le rapport pdf """
 
         
@@ -25,16 +25,16 @@ class Report_wind(QtGui.QWidget):
         """initialisation de la fenetre et des boutons """
         super(Report_wind, self).__init__()
         
-        self.grid_unit = QtGui.QGridLayout()
+        self.grid_unit = QtWidgets.QGridLayout()
         self.grid_unit.setSpacing(6)
        
         self.setLayout(self.grid_unit)
        
-        btn2 = QtGui.QPushButton('Generate report', self)
-        self.label_1=QtGui.QLabel("Title")
-        self.label_2=QtGui.QLabel("Author")                      
-        self.Qline_1=QtGui.QLineEdit("Default")
-        self.Qline_2=QtGui.QLineEdit("Arnaud Le Fur")    
+        btn2 = QtWidgets.QPushButton('Generate report', self)
+        self.label_1=QtWidgets.QLabel("Title")
+        self.label_2=QtWidgets.QLabel("Author")                      
+        self.Qline_1=QtWidgets.QLineEdit("Default")
+        self.Qline_2=QtWidgets.QLineEdit("Arnaud Le Fur")    
         
         self.grid_unit.addWidget(self.label_1,0,0)
         self.grid_unit.addWidget(self.label_2,1,0)
@@ -47,10 +47,10 @@ class Report_wind(QtGui.QWidget):
         """Fonction appele lorsque lutilisateur clique sur le bouton generate report """
         self.Title=str(self.Qline_1.text())
         self.go()
-        btn = QtGui.QPushButton('Read report', self)   
+        btn = QtWidgets.QPushButton('Read report', self)   
         btn.clicked.connect(self.read_report)   
         self.grid_unit.addWidget(btn,3,0)                                    #On ajoute un bouton permettant de lire le rapport venant detre genere
-        QtGui.QMessageBox.information(self,'Message',"Report generated")
+        QtWidgets.QMessageBox.information(self,'Message',"Report generated")
 
     def read_report(self):
         """Demarre le fichier pdf avec le programme defini par defaut sur windows"""

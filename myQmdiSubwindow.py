@@ -6,9 +6,9 @@
 #############################################################################
 
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 
-class MyQMdiSubwindow(QtGui.QMdiSubWindow):
+class MyQMdiSubwindow(QtWidgets.QMdiSubWindow):
     '''Cette classe permet de surdefinir la fonction close '''
     def __init__(self,parent=None):
         '''Initialisation'''

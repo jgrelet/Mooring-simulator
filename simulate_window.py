@@ -3,14 +3,14 @@
 ##Edited by Arnaud Le Fur, IFREMER                                       ####
 #############################################################################
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 import copy
 import numpy as np
 from math import cos, sin, atan, sqrt
 from mySimulateCanvas import MySimulateCanvas
 
 
-class Simulate_wind(QtGui.QWidget):
+class Simulate_wind(QtWidgets.QWidget):
     """Classe contenant la fenetre de simulation """
 
     def __init__(self, data, parent=None):
@@ -251,7 +251,7 @@ class Simulate_wind(QtGui.QWidget):
             T_max[-1] = 0.0
             return T, V_chute_t, T_max
         else:
-            QtGui.QMessageBox.warning(
+            QtWidgets.QMessageBox.warning(
                 self, 'Message', "Your Anchor is too light")
 
     def Anchor_max_value(self):
@@ -571,7 +571,7 @@ class Simulate_wind(QtGui.QWidget):
                     self.data[6][i] = ratio
 
                 if self.data[6][i] >= 1 or self.data[6][i] <= 0:
-                    QtGui.QMessageBox.warning(
+                    QtWidgets.QMessageBox.warning(
                         self, 'Message', "An instrument is clamped beyond it support")
 
         #Calcul de la profondeur des instruments#
@@ -670,14 +670,14 @@ class Simulate_wind(QtGui.QWidget):
         for i in range(len(self.T_max)):
             self.old_depth.append(self.myyfloat[self.find_match(i)])
 
-        self.groupLayout = QtGui.QVBoxLayout()
-        self.scrollArea = QtGui.QScrollArea()
+        self.groupLayout = QtWidgets.QVBoxLayout()
+        self.scrollArea = QtWidgets.QScrollArea()
         self.groupLayout.addWidget(self.scrollArea)
-        self.scrolledWidget = QtGui.QWidget()  # Zone de defilement verticale
+        self.scrolledWidget = QtWidgets.QWidget()  # Zone de defilement verticale
         self.scrolledWidget.setMinimumWidth(self.data[4])
-        self.layout = QtGui.QVBoxLayout(self.scrolledWidget)
+        self.layout = QtWidgets.QVBoxLayout(self.scrolledWidget)
 
-        self.widget_graph = QtGui.QWidget(self)
+        self.widget_graph = QtWidgets.QWidget(self)
 
         sc1 = MySimulateCanvas(self.myxfloat, self.myyfloat, backup, self.T_max, self.T,
                             self.old_depth, self.V_chute_t, self.release_ind, self.name_instru,
@@ -690,33 +690,33 @@ class Simulate_wind(QtGui.QWidget):
         self.anchor_value = [round(safe_value_anchor, 1), -1*round(
             float(self.data[0][-1].mass), 1), round(max(self.percent_max_T), 1)]
         #Affichage valeurs lest#
-        self.widget_anchors = QtGui.QWidget(self)
-        self.anchors_layout = QtGui.QGridLayout()
-        label1 = QtGui.QLabel("Anchors's WET weight (kg)")
+        self.widget_anchors = QtWidgets.QWidget(self)
+        self.anchors_layout = QtWidgets.QGridLayout()
+        label1 = QtWidgets.QLabel("Anchors's WET weight (kg)")
         label1.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label2 = QtGui.QLabel("Min")
+        label2 = QtWidgets.QLabel("Min")
         label2.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label3 = QtGui.QLabel("Max")
+        label3 = QtWidgets.QLabel("Max")
         label3.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label4 = QtGui.QLabel(str(round(min_value_anchor, 1)))
+        label4 = QtWidgets.QLabel(str(round(min_value_anchor, 1)))
         label4.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 1px solid black }")
-        label5 = QtGui.QLabel(str(round(self.max_value_anchor, 1)))
+        label5 = QtWidgets.QLabel(str(round(self.max_value_anchor, 1)))
         label5.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 1px solid black }")
-        label6 = QtGui.QLabel("Safe Anchor's weight")
+        label6 = QtWidgets.QLabel("Safe Anchor's weight")
         label6.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label7 = QtGui.QLabel("Selected Anchor's weight")
+        label7 = QtWidgets.QLabel("Selected Anchor's weight")
         label7.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label8 = QtGui.QLabel(str(self.anchor_value[0]))
+        label8 = QtWidgets.QLabel(str(self.anchor_value[0]))
         label8.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 1px solid black }")
-        label9 = QtGui.QLabel(str(self.anchor_value[1]))
+        label9 = QtWidgets.QLabel(str(self.anchor_value[1]))
         # Valeur choisie < valeur recommande
         if self.anchor_value[1] < self.anchor_value[0]:
             label9.setStyleSheet(
@@ -725,10 +725,10 @@ class Simulate_wind(QtGui.QWidget):
             label9.setStyleSheet(
                 "QLabel { background-color : green; color : white;border: 1px solid black }")
 
-        label10 = QtGui.QLabel("Max Launch Tension / Breaking Strength (%)")
+        label10 = QtWidgets.QLabel("Max Launch Tension / Breaking Strength (%)")
         label10.setStyleSheet(
             "QLabel { background-color : white; color : black;border: 2px solid black }")
-        label11 = QtGui.QLabel(str(self.anchor_value[2]))
+        label11 = QtWidgets.QLabel(str(self.anchor_value[2]))
         if round(max(self.percent_max_T), 1) > 40:  # T_max/Ultimate_load >40%
             label11.setStyleSheet(
                 "QLabel { background-color : red; color : white ;border: 2px solid black }")
@@ -863,10 +863,10 @@ class Simulate_wind(QtGui.QWidget):
             Tab_final.append(inter)
         Tab_final.insert(0, ["Name", "Static Length (m)", "Depth (m)", "Tension (Kp)", "Angle (deg)",
                             "Dx (m)", "Dz (m)", "Buoy (kg)", "Weight (kg)", "Launch Tension (%)", "Length Stretched (m)"])
-        tab_grid = QtGui.QGridLayout()
+        tab_grid = QtWidgets.QGridLayout()
         inter = []
         for j in range(len(Tab_final[0])):  # Affichage du nom des categories
-            label = QtGui.QLabel(Tab_final[0][j])
+            label = QtWidgets.QLabel(Tab_final[0][j])
             label.setStyleSheet(
                 "QLabel { background-color : white; color : black;border: 2px solid black }")
             tab_grid.addWidget(label, 0, j)
@@ -881,7 +881,7 @@ class Simulate_wind(QtGui.QWidget):
                     if type(Tab_final[k][l]) != str:
                         Tab_final[k][l] = str(round(Tab_final[k][l], 1))
                     inter.append(Tab_final[k][l])
-                    label = QtGui.QLabel(Tab_final[k][l])
+                    label = QtWidgets.QLabel(Tab_final[k][l])
                     # On repere en bleu ciel : la bouee de tete, les instruments, les largueurs, et le lest
                     if k-1 in ind_instrum or k == 1 or k-1 == release_ind or k == len(Tab_final)-1:
                         label.setStyleSheet(

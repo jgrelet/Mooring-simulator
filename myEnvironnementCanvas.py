@@ -5,12 +5,13 @@
 ##Edited by Arnaud Le Fur, IFREMER
 #############################################################################
 
-from PyQt4 import QtGui
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from PyQt5 import QtWidgets
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 class MyEnvironnementCanvas(FigureCanvas):
-    """Cette classe permet de recuperer dans un QWidget un graph de type Matplotlib correspondant au profil de courant"""
+    """Cette classe permet de recuperer dans un QWidget un graph de type Matplotlib 
+    correspondant au profil de courant"""
     def __init__(self, x, y, title, xlabel, ylabel,parent=None, width=5, height=5, dpi=100):
         """Initialisation du graphique a partir des parametres dentree
         Input : x : Vecteur correspondant aux valeurs du courant
@@ -31,8 +32,8 @@ class MyEnvironnementCanvas(FigureCanvas):
         self.setParent(parent)
 
         FigureCanvas.setSizePolicy(self,
-                                   QtGui.QSizePolicy.Expanding,
-                                   QtGui.QSizePolicy.Expanding)
+                                   QtWidgets.QSizePolicy.Expanding,
+                                   QtWidgets.QSizePolicy.Expanding)
         FigureCanvas.updateGeometry(self)
         self.axes.plot(x, y)
         self.axes.set_xlabel(xlabel)

@@ -5,10 +5,10 @@
 
 
 from myEnvironnementCanvas import MyEnvironnementCanvas
-from PyQt4 import QtGui
+from PyQt5 import QtGui,QtWidgets
 import functools
 
-class Environnement_wind(QtGui.QMdiArea):
+class Environnement_wind(QtWidgets.QMdiArea):
     """Cette classe genere la fenetre de definitions des contraintes environnementales """
     def __init__(self):
         """Initialisation de la fenetre et des boutons """
@@ -17,21 +17,21 @@ class Environnement_wind(QtGui.QMdiArea):
         self.liste_point=[]
         self.param_saved=0
         #Premier onglet#
-        self.window_1=QtGui.QWidget()
+        self.window_1=QtWidgets.QWidget()
         self.subwindow_1=self.addSubWindow(self.window_1)
         self.subwindow_1.setWindowTitle('Define surface / bottom')
         self.subwindow_1.setWindowIcon(QtGui.QIcon('exit24.png'))
-        self.combo_1=QtGui.QComboBox()
+        self.combo_1=QtWidgets.QComboBox()
         self.combo_1.addItem("Position defined by height from bottom to surface")
         self.combo_1.addItem("Position defined by depth from surface to bottom")
         self.combo_1.activated.connect(self.combo_onActivated)
       
-        self.btn1 = QtGui.QPushButton('Save', self)
+        self.btn1 = QtWidgets.QPushButton('Save', self)
         self.btn1.clicked.connect(functools.partial(self.save_surf_bott_btn,0))
-        self.choice_depht_height = QtGui.QLineEdit("None")
-        self.depht_height1=QtGui.QLabel("Surface height")
-        self.window_1_layout1=QtGui.QVBoxLayout()
-        self.window_1_layout2=QtGui.QHBoxLayout()
+        self.choice_depht_height = QtWidgets.QLineEdit("None")
+        self.depht_height1=QtWidgets.QLabel("Surface height")
+        self.window_1_layout1=QtWidgets.QVBoxLayout()
+        self.window_1_layout2=QtWidgets.QHBoxLayout()
         self.window_1_layout1.addWidget(self.combo_1)
         self.window_1_layout2.addWidget(self.depht_height1)
         self.window_1_layout2.addWidget(self.choice_depht_height)
@@ -39,25 +39,25 @@ class Environnement_wind(QtGui.QMdiArea):
         self.window_1_layout1.addLayout(self.window_1_layout2)
         self.window_1.setLayout(self.window_1_layout1)
         #Deuxieme onglet#
-        self.window_2=QtGui.QWidget()
+        self.window_2=QtWidgets.QWidget()
         self.subwindow_2=self.addSubWindow(self.window_2)
         self.subwindow_2.setWindowTitle('Define currents')
         self.subwindow_2.setWindowIcon(QtGui.QIcon('exit24.png'))
-        self.windows_2_layout2=QtGui.QHBoxLayout() #Va contenir la grille des points definissant le courant et le plot du profil de courant
+        self.windows_2_layout2=QtWidgets.QHBoxLayout() #Va contenir la grille des points definissant le courant et le plot du profil de courant
         self.window_2.setLayout(self.windows_2_layout2)
         #Definition des labels#
-        self.label_current1=QtGui.QLabel(self.combo_1.currentText())
-        self.label_current2=QtGui.QLabel("Height")
-        self.label_current3=QtGui.QLabel("Current value")
-        self.label_current4=QtGui.QLabel("Top")
-        self.label_current5=QtGui.QLabel("0")
-        self.line1=QtGui.QLineEdit("0.0")
-        self.label_current6=QtGui.QLabel("Bottom")
-        self.label_current7=QtGui.QLabel("None")
-        self.line2=QtGui.QLineEdit("0.0")
-        self.btn3 = QtGui.QPushButton('Create new point', self)
+        self.label_current1=QtWidgets.QLabel(self.combo_1.currentText())
+        self.label_current2=QtWidgets.QLabel("Height")
+        self.label_current3=QtWidgets.QLabel("Current value")
+        self.label_current4=QtWidgets.QLabel("Top")
+        self.label_current5=QtWidgets.QLabel("0")
+        self.line1=QtWidgets.QLineEdit("0.0")
+        self.label_current6=QtWidgets.QLabel("Bottom")
+        self.label_current7=QtWidgets.QLabel("None")
+        self.line2=QtWidgets.QLineEdit("0.0")
+        self.btn3 = QtWidgets.QPushButton('Create new point', self)
         self.btn3.clicked.connect(self.create_new_current_point)
-        self.plot_profile_button=QtGui.QPushButton('Plot current profile', self)
+        self.plot_profile_button=QtWidgets.QPushButton('Plot current profile', self)
         self.plot_profile_button.clicked.connect(self.Plot_profile)
         
         self.label_current2.setStyleSheet("QLabel { background-color : white; color : black;border: 2px solid black }")
@@ -68,8 +68,8 @@ class Environnement_wind(QtGui.QMdiArea):
         self.label_current7.setStyleSheet("QLabel { background-color : white; color : black;border: 1px solid black }")
         
         #Ajout des labels dans la grille#
-        self.widget1=QtGui.QWidget()
-        self.mylayout=QtGui.QGridLayout()
+        self.widget1=QtWidgets.QWidget()
+        self.mylayout=QtWidgets.QGridLayout()
         self.mylayout.addWidget(self.label_current1,0,0,1,4)
         self.mylayout.addWidget(self.label_current2,1,1)
         self.mylayout.addWidget(self.label_current3,1,2)
@@ -121,7 +121,7 @@ class Environnement_wind(QtGui.QMdiArea):
             self.label_current7.setText("0")
             
         if test!=1:
-            QtGui.QMessageBox.information(self,'Message',"Parameters saved")
+            QtWidgets.QMessageBox.information(self,'Message',"Parameters saved")
         self.param_saved=1
     
     def Plot_profile(self):
@@ -129,16 +129,16 @@ class Environnement_wind(QtGui.QMdiArea):
         x_float,y_float=self.get_all_current_value()        #Recuperation des valeurs
         if hasattr(self,"sc1"):                             #Sil existe un precedent graphique celui-ci est detruit
             self.sc1.hide()
-        self.plot_widget = QtGui.QWidget(self)
+        self.plot_widget = QtWidgets.QWidget(self)
         self.sc1 = MyEnvironnementCanvas(x_float, y_float, "Current Profile", "Speed (m.s-1)","Depth(m)", self.plot_widget) #Plot du graphique
         self.windows_2_layout2.addWidget(self.sc1)                                                                          #Ajout dans le layout
 
     def create_new_current_point(self):
         """Cette fonction est appele lorsque lutilisateur ajoute un nouveau point de courant """
         #Creation des 3 labels#
-        new_depth=QtGui.QLineEdit()         #Profondeur du courant
-        new_value=QtGui.QLineEdit()         #Valeur du courant 
-        new_button_delete = QtGui.QPushButton('Remove point', self) #Bouton de suppression adapte
+        new_depth=QtWidgets.QLineEdit()         #Profondeur du courant
+        new_value=QtWidgets.QLineEdit()         #Valeur du courant 
+        new_button_delete = QtWidgets.QPushButton('Remove point', self) #Bouton de suppression adapte
 
         k=len(self.liste_point)+3
         new_button_delete.clicked.connect(functools.partial(self.remove_current_point,k)) #Connecte le bouton delete a la fonction de suppression en passant en parametre son indice

@@ -4,9 +4,9 @@
 ##preference_window.py creates the preference window and its buttons     ####
 #############################################################################
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 
-class Preference_wind(QtGui.QMdiArea):
+class Preference_wind(QtWidgets.QMdiArea):
     
     def __init__(self):
         super(Preference_wind, self).__init__()
@@ -14,9 +14,9 @@ class Preference_wind(QtGui.QMdiArea):
 
 
         
-        self.wind_unit=QtGui.QWidget()
+        self.wind_unit=QtWidgets.QWidget()
         
-        self.grid_unit = QtGui.QGridLayout()
+        self.grid_unit = QtWidgets.QGridLayout()
         self.grid_unit.setSpacing(1)
        
         self.wind_unit.setLayout(self.grid_unit)
@@ -26,17 +26,17 @@ class Preference_wind(QtGui.QMdiArea):
         self.edit_unit.setWindowIcon(QtGui.QIcon('exit24.png'))
         
         
-        btn2 = QtGui.QPushButton('Save', self)
-        self.combo_unit1=QtGui.QComboBox()
-        self.label_unit1=QtGui.QLabel("Length")
+        btn2 = QtWidgets.QPushButton('Save', self)
+        self.combo_unit1=QtWidgets.QComboBox()
+        self.label_unit1=QtWidgets.QLabel("Length")
         self.combo_unit1.addItem("m")
         self.combo_unit1.addItem("ft")
-        self.combo_unit2=QtGui.QComboBox()
-        self.label_unit2=QtGui.QLabel("Mass")                      
+        self.combo_unit2=QtWidgets.QComboBox()
+        self.label_unit2=QtWidgets.QLabel("Mass")                      
         self.combo_unit2.addItem("kg")
         self.combo_unit2.addItem("lb")
-        self.combo_unit3=QtGui.QComboBox()
-        self.label_unit3=QtGui.QLabel("Strength")
+        self.combo_unit3=QtWidgets.QComboBox()
+        self.label_unit3=QtWidgets.QLabel("Strength")
         self.combo_unit3.addItem("N")
         self.combo_unit3.addItem("kp")
         self.grid_unit.addWidget(self.label_unit1,0,0)
@@ -57,4 +57,4 @@ class Preference_wind(QtGui.QMdiArea):
         self.unit_length_chosen=self.combo_unit1.currentIndex()
         self.unit_mass_chosen=self.combo_unit2.currentIndex()
         self.unit_strength_chosen=self.combo_unit3.currentIndex()
-        QtGui.QMessageBox.information(self,'Message',"Parameters saved")
+        QtWidgets.QMessageBox.information(self,'Message',"Parameters saved")

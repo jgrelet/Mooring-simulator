@@ -5,9 +5,9 @@
 # Edited by Arnaud Le Fur, IFREMER
 #############################################################################
 
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 import numpy as np
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pylab as plt
 
@@ -42,7 +42,7 @@ class MySimulateCanvas(FigureCanvas):
         self.setParent(parent)
 
         FigureCanvas.setSizePolicy(self,
-            QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         FigureCanvas.updateGeometry(self)
 
         # Definition des axes pour les 4 subplots
