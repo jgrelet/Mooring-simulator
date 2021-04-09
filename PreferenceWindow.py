@@ -4,7 +4,7 @@
 ##PreferenceWindowow.py creates the preference window and its buttons     ####
 #############################################################################
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtGui, QtWidgets
 
 class PreferenceWindow(QtWidgets.QMdiArea):
     
