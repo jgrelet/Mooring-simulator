@@ -8,12 +8,12 @@
 
 from PyQt5 import QtWidgets
 
-class myQDockWidget(QtWidgets.QDockWidget):
+class QDockWidget(QtWidgets.QDockWidget):
     '''Cette classe permet de surdefinir la fonction close '''
     
     def __init__(self,parent=None):
         '''Initialisation '''
-        super(myQDockWidget, self).__init__(parent)
+        super(QDockWidget , self).__init__(parent)
         
     def closeEvent(self, event):
         '''Permet de cacher la fenetre au lieu de la fermer '''

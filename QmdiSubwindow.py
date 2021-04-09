@@ -8,11 +8,11 @@
 
 from PyQt5 import QtWidgets
 
-class MyQMdiSubwindow(QtWidgets.QMdiSubWindow):
+class QMdiSubwindow(QtWidgets.QMdiSubWindow):
     '''Cette classe permet de surdefinir la fonction close '''
     def __init__(self,parent=None):
         '''Initialisation'''
-        super(MyQMdiSubwindow, self).__init__(parent)
+        super(QMdiSubwindow, self).__init__(parent)
         
     def closeEvent(self, event):
         '''Permet de cacher la fenetre au lieu de la fermer '''

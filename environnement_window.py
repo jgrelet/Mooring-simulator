@@ -4,7 +4,7 @@
 ########################################################################################
 
 
-from myEnvironnementCanvas import MyEnvironnementCanvas
+from EnvironnementCanvas import EnvironnementCanvas
 from PyQt5 import QtGui,QtWidgets
 import functools
 
@@ -130,7 +130,7 @@ class Environnement_wind(QtWidgets.QMdiArea):
         if hasattr(self,"sc1"):                             #Sil existe un precedent graphique celui-ci est detruit
             self.sc1.hide()
         self.plot_widget = QtWidgets.QWidget(self)
-        self.sc1 = MyEnvironnementCanvas(x_float, y_float, "Current Profile", "Speed (m.s-1)","Depth(m)", self.plot_widget) #Plot du graphique
+        self.sc1 = EnvironnementCanvas(x_float, y_float, "Current Profile", "Speed (m.s-1)","Depth(m)", self.plot_widget) #Plot du graphique
         self.windows_2_layout2.addWidget(self.sc1)                                                                          #Ajout dans le layout
 
     def create_new_current_point(self):

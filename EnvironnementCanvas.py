@@ -9,7 +9,7 @@ from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-class MyEnvironnementCanvas(FigureCanvas):
+class EnvironnementCanvas(FigureCanvas):
     """Cette classe permet de recuperer dans un QWidget un graph de type Matplotlib 
     correspondant au profil de courant"""
     def __init__(self, x, y, title, xlabel, ylabel,parent=None, width=5, height=5, dpi=100):

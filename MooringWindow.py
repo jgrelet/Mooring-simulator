@@ -596,8 +596,8 @@ class MooringWidget(QtWidgets.QWidget):
 
 
 class ObjectList(QtWidgets.QListWidget):
-    """Cette classe definit une liste de Widget, une instance de cette classe est creee pour chaque type d objet, 
-    les objets apparaissent sous formes d icones """
+    """Cette classe definit une liste de Widget, une instance de cette classe
+       est creee pour chaque type d objet, les objets apparaissent sous formes d icones """
 
     def __init__(self, parent=None):
         """Initialisation de la classe """
@@ -636,11 +636,15 @@ class ObjectList(QtWidgets.QListWidget):
         item = self.currentItem()
         itemData = QtCore.QByteArray()
         dataStream = QtCore.QDataStream(itemData, QtCore.QIODevice.WriteOnly)
-        ok = item.data(QtCore.Qt.UserRole).toList()
+        #ok = item.data(QtCore.Qt.UserRole).toList()
+        ok = item.data(QtCore.Qt.UserRole)
+        print(ok)
         #On recupere les infos contenus dans l item#
         pixmap = QtGui.QPixmap(ok[0])
-        sheet = ok[1].toInt()
-        nb = ok[2].toInt()
+        #sheet = ok[1].toInt()
+        #nb = ok[2].toInt()
+        sheet = ok[1]
+        nb = ok[2]
         loc = QtCore.QPoint(sheet[0], nb[0])
 
         # On les ajoute dans le dataStream et ces informations pourront etre recuperees par la classe mooringWidget

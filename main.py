@@ -8,12 +8,12 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from library_window import Library_wind
-#from preference_window import Preference_wind
-from report_window import Report_wind
+#from PreferenceWindowow import PreferenceWindow
+from ReportWindow import ReportWindow
 from environnement_window import Environnement_wind
-from new_mooring_window import MooringWindow
-from simulate_window import Simulate_wind
-import myQDockWidget
+from MooringWindow import MooringWindow
+from SimulateWindow import SimulateWindow
+import QDockWidget
 from os import getcwd
 from math import floor
 import copy
@@ -162,7 +162,7 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
         self.library_wind = Library_wind(path)
         self.library_wind.setMinimumWidth(floor(self.screen_width/2))
         self.library_wind.setMinimumHeight(200)
-        self.library_dockwidget = myQDockWidget.myQDockWidget()
+        self.library_dockwidget = QDockWidget.QDockWidget()
         self.library_dockwidget.setWidget(self.library_wind)
         #Ajoute la bibliotheque dans le DockWidget en position haute#
         self.addDockWidget(QtCore.Qt.TopDockWidgetArea,
@@ -477,8 +477,8 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
             self.estimate_length()  # On estime les longueurs des cables definies comme automatique
             # On recupere dans data toutes les infos necessaire a la simulation
             data = self.gathering_mooring_information()
-            self.simulate_wind = Simulate_wind(data)
-            self.zoneCentrale.addTab(self.simulate_wind, "Simulation_" +
+            self.SimulateWindow = SimulateWindow(data)
+            self.zoneCentrale.addTab(self.SimulateWindow, "Simulation_" +
                                      self.zoneCentrale.tabText(self.zoneCentrale.currentIndex()))
             # On recupere les infos necessaire pour la redaction du rapport
             self.gathering_report_information()
@@ -679,17 +679,17 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
 
     def gathering_report_information(self):
         """Cette fonction recupere tout les informations necessaire pour la generation du rapport """
-        self.report_wind.Tab_report = self.simulate_wind.Tab_report  # On copie le tableau de simulation dans la fenetre du rapport
+        self.ReportWindow.Tab_report = self.SimulateWindow.Tab_report  # On copie le tableau de simulation dans la fenetre du rapport
         # On copie l inventaire dans la fenetre du rapport
-        self.report_wind.inventory = self.simulate_wind.inventory
+        self.ReportWindow.inventory = self.SimulateWindow.inventory
         # On copie la valeur du lest dans la fenetre du rapport
-        self.report_wind.anchor_value = self.simulate_wind.anchor_value
+        self.ReportWindow.anchor_value = self.SimulateWindow.anchor_value
         k = 25
         offset = k*8
         font = QtWidgets.QFont("Arial")
         font.setPixelSize(k)
-        self.report_wind.mooring_image_width = []
-        self.report_wind.mooring_image_height = []
+        self.ReportWindow.mooring_image_width = []
+        self.ReportWindow.mooring_image_height = []
         count = 0
         # On parcourt l ensemble des images
         for i in range(len(self.mooring_wind.mooringWidget.image2)):
@@ -699,29 +699,29 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
             blank.fill(QtCore.Qt.white)
             painter.drawPixmap(0, 0, blank)
             painter.setFont(font)
-            if type(self.simulate_wind.data[0][i]) != list:
+            if type(self.SimulateWindow.data[0][i]) != list:
                 #Pas de clampage#
-                if self.simulate_wind.data[0][i].__class__.__name__ == "Ropes":
+                if self.SimulateWindow.data[0][i].__class__.__name__ == "Ropes":
                     # Si c est un cable on ajoute la longueur sur l image
-                    text = str(self.simulate_wind.original_length[i])+' '+'m'
+                    text = str(self.SimulateWindow.original_length[i])+' '+'m'
                     painter.drawText(QtCore.QPoint(
                         35, pixmap.height()-5-abs(pixmap.height()-23)/2), text)
-                if self.simulate_wind.data[0][i].__class__.__name__ == "Instruments" or i == 0:
+                if self.SimulateWindow.data[0][i].__class__.__name__ == "Instruments" or i == 0:
                     # Si c est un instrument on ajoute la profondeur sur l image
                     text = str(
-                        round(self.simulate_wind.myyfloat[i], 1))+' '+'m'
+                        round(self.SimulateWindow.myyfloat[i], 1))+' '+'m'
                     painter.drawText(QtCore.QPoint(
                         3, pixmap.height()-5-abs(pixmap.height()-23)/2), text)
             else:
                 #Clampage#
-                if self.simulate_wind.data[0][i][0].__class__.__name__ == "Ropes":
+                if self.SimulateWindow.data[0][i][0].__class__.__name__ == "Ropes":
                     text = str(
-                        self.simulate_wind.original_length[i][0])+' '+'m'
+                        self.SimulateWindow.original_length[i][0])+' '+'m'
                     painter.drawText(QtCore.QPoint(
                         0.75*offset+0.5*max(self.mooring_wind.mooringWidget.max_width)+30, pixmap.height()-5-abs(pixmap.height()-23)/2), text)
-                if self.simulate_wind.data[0][i][1].__class__.__name__ == "Instruments":
+                if self.SimulateWindow.data[0][i][1].__class__.__name__ == "Instruments":
                     text = str(
-                        round(self.simulate_wind.y_instru_top[count], 1))+' '+'m'
+                        round(self.SimulateWindow.y_instru_top[count], 1))+' '+'m'
                     painter.drawText(QtCore.QPoint(
                         35, pixmap.height()-5-abs(pixmap.height()-23)/2), text)
                     count = count+1
@@ -734,13 +734,13 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
 
             pixmap.save(self.mypath+'\Report\Pictures\img' +
                         str(i)+'.png')  # Sauvegarde de l image
-            self.report_wind.mooring_image_width.append(pixmap.width())
-            self.report_wind.mooring_image_height.append(pixmap.height())
-        self.report_wind.mypath = self.mypath
+            self.ReportWindow.mooring_image_width.append(pixmap.width())
+            self.ReportWindow.mooring_image_height.append(pixmap.height())
+        self.ReportWindow.mypath = self.mypath
 
     def generate_report_pushButton_clicked(self):
         """Cette fonction est appele lorsque l utilisateur clique sur le bouton generate report """
-        if hasattr(self, "simulate_wind"):  # On verifie que le mouillage a bien ete simule
+        if hasattr(self, "SimulateWindow"):  # On verifie que le mouillage a bien ete simule
             self.report_dockwidget.show()
         else:
             QtWidgets.QMessageBox.information(
@@ -750,17 +750,17 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
 
 #   def create_preference(self):
 #     #Create the preferences window#
-#       self.preference_wind=Preference_wind()
-#       self.preference_dockwidget=myQDockWidget.myQDockWidget()
-#       self.preference_dockwidget.setWidget(self.preference_wind)
+#       self.PreferenceWindow=PreferenceWindow()
+#       self.preference_dockwidget=QDockWidget.QDockWidget()
+#       self.preference_dockwidget.setWidget(self.PreferenceWindow)
 #       self.addDockWidget(QtCore.Qt.TopDockWidgetArea,self.preference_dockwidget)
 #        self.preference_dockwidget.setWindowTitle('Preferences')
 
     def create_report(self):
         """Creation de la fenetre du rapport """
-        self.report_wind = Report_wind()
-        self.report_dockwidget = myQDockWidget.myQDockWidget()
-        self.report_dockwidget.setWidget(self.report_wind)
+        self.ReportWindow = ReportWindow()
+        self.report_dockwidget = QDockWidget.QDockWidget()
+        self.report_dockwidget.setWidget(self.ReportWindow)
         self.addDockWidget(QtCore.Qt.TopDockWidgetArea, self.report_dockwidget)
         self.report_dockwidget.setWindowTitle('Report parameters')
 
@@ -769,7 +769,7 @@ class Mooring_Simulator(QtWidgets.QMainWindow):
         self.environnement_wind = Environnement_wind()
         self.environnement_wind.setMinimumWidth(floor(0.75*0.5*self.screen_width))
         self.environnement_wind.setMinimumHeight(200)
-        self.environnement_dockwidget = myQDockWidget.myQDockWidget()
+        self.environnement_dockwidget = QDockWidget.QDockWidget()
         self.environnement_dockwidget.setWidget(self.environnement_wind)
         self.addDockWidget(QtCore.Qt.TopDockWidgetArea,
                            self.environnement_dockwidget)

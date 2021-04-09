@@ -1,15 +1,15 @@
 #############################################################################
 ##Moorinator, 2013                                                       ####
 ##Edited by Arnaud Le Fur, IFREMER                                       ####
-##preference_window.py creates the preference window and its buttons     ####
+##PreferenceWindowow.py creates the preference window and its buttons     ####
 #############################################################################
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 
-class Preference_wind(QtWidgets.QMdiArea):
+class PreferenceWindow(QtWidgets.QMdiArea):
     
     def __init__(self):
-        super(Preference_wind, self).__init__()
+        super(PreferenceWindow, self).__init__()
 
 
 

@@ -7,10 +7,10 @@ from PyQt5 import QtWidgets
 import copy
 import numpy as np
 from math import cos, sin, atan, sqrt
-from mySimulateCanvas import MySimulateCanvas
+from SimulateCanvas import SimulateCanvas
 
 
-class Simulate_wind(QtWidgets.QWidget):
+class SimulateWindow(QtWidgets.QWidget):
     """Classe contenant la fenetre de simulation """
 
     def __init__(self, data, parent=None):
@@ -24,7 +24,7 @@ class Simulate_wind(QtWidgets.QWidget):
                 data[5] : Chemin du programme
                 data[6] : Liste des ratio de clampage des instruments
                 """
-        super(Simulate_wind, self).__init__(parent)
+        super(SimulateWindow, self).__init__(parent)
 
         l_max = 10.  # Longueur max d un element
         count = 0
@@ -679,7 +679,7 @@ class Simulate_wind(QtWidgets.QWidget):
 
         self.widget_graph = QtWidgets.QWidget(self)
 
-        sc1 = MySimulateCanvas(self.myxfloat, self.myyfloat, backup, self.T_max, self.T,
+        sc1 = SimulateCanvas(self.myxfloat, self.myyfloat, backup, self.T_max, self.T,
                             self.old_depth, self.V_chute_t, self.release_ind, self.name_instru,
                             self.x_instru, self.y_instru, self.data[5], self.widget_graph)
         self.layout.addWidget(sc1)

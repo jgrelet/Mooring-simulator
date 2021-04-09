@@ -12,9 +12,12 @@ from matplotlib.figure import Figure
 import matplotlib.pylab as plt
 
 
-class MySimulateCanvas(FigureCanvas):
-    """Cette classe permet dune part de recuperer dans un QWidget un graphe global de type Matplotlib contenant les quatres graphiques
-        et dautre part denregistrer les 4 images correspondants a chaque graphique"""
+class SimulateCanvas(FigureCanvas):
+    """
+    Cette classe permet dune part de recuperer dans un QWidget un graphe global de 
+    type Matplotlib contenant les quatres graphiques et dautre part denregistrer 
+    les 4 images correspondants a chaque graphique
+    """
 
     def __init__(self, x, y, backup, T_max, T, old_depth, V_chute, release_ind, instru_name, x_instru, 
                 y_instru, path, parent=None, width=2, height=6, dpi=100):

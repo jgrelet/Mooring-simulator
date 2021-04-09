@@ -17,13 +17,13 @@ import time
 
 
 
-class Report_wind(QtWidgets.QWidget):
+class ReportWindow(QtWidgets.QWidget):
     """Cette classe permet de generer automatiquement le rapport pdf """
 
         
     def __init__(self):
         """initialisation de la fenetre et des boutons """
-        super(Report_wind, self).__init__()
+        super(ReportWindow, self).__init__()
         
         self.grid_unit = QtWidgets.QGridLayout()
         self.grid_unit.setSpacing(6)
