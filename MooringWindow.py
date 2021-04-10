@@ -12,7 +12,25 @@ from os import getcwd
 
 
 class MooringWidget(QtWidgets.QWidget):
-    """Cette classe definit la partie gauche de l ecran de creation du mouillage : l espace de travail """
+    """ 
+    This class defines the left part of the anchor creation screen: the workspace.
+
+    Many QWidget objects support the drag and drop activity. Those that allow their 
+    data to be dragged have setDragEnabled() which must be set to true. On the other
+    hand, the widgets should respond to the drag and drop events in order to store
+    the data dragged into them.
+
+    DragEnterEvent provides an event which is sent to the target widget as dragging 
+    action enters it.
+
+    DragMoveEvent is used when the drag and drop action is in progress.
+
+    DragLeaveEvent is generated as the drag and drop action leaves the widget.
+
+    DropEvent, on the other hand, occurs when the drop is completed. 
+
+    The event’s proposed action can be accepted or rejected conditionally.
+"""
 
     def __init__(self, parent=None):
         super(MooringWidget, self).__init__(parent)
@@ -77,10 +95,13 @@ class MooringWidget(QtWidgets.QWidget):
         self.setLayout(self.moor_bigLayout)
 
         self.vbar = self.moor_scrollArea.verticalScrollBar()
+        # enable drop events for the widget 
         self.setAcceptDrops(True)
 
     def dragEnterEvent(self, event):
-        """Cette fonction est appele lorsque l utilisateur entre dans la fenetre en faisant glisser un objet"""
+        """ Provides an event which is sent to the target widget as dragging action enters it.
+            This function is called when the user enters the window by dragging an object
+        """
 
         if event.mimeData().hasFormat('image/piece'):  # Bon format
             pieceData = event.mimeData().data('image/piece')
@@ -97,7 +118,9 @@ class MooringWidget(QtWidgets.QWidget):
             event.ignore()
 
     def dropEvent(self, event):
-        """Cette fonction est appele lorsque l utilisateur lache l objet qu il faisait glisser"""
+        """By reimplementing the dropEvent() method we define what happes at the drop event.
+        This function is called when the user drops the object he was dragging
+        """
         tab = []
         instru_depth = 0
         # On recupere la position en y de chaque image du mouillage
@@ -636,15 +659,15 @@ class ObjectList(QtWidgets.QListWidget):
         item = self.currentItem()
         itemData = QtCore.QByteArray()
         dataStream = QtCore.QDataStream(itemData, QtCore.QIODevice.WriteOnly)
-        #ok = item.data(QtCore.Qt.UserRole).toList()
-        ok = item.data(QtCore.Qt.UserRole)
+        ok = item.data(QtCore.Qt.UserRole).toList()
+        #ok = item.data(QtCore.Qt.UserRole)
         print(ok)
         #On recupere les infos contenus dans l item#
         pixmap = QtGui.QPixmap(ok[0])
-        #sheet = ok[1].toInt()
-        #nb = ok[2].toInt()
-        sheet = ok[1]
-        nb = ok[2]
+        sheet = ok[1].toInt()
+        nb = ok[2].toInt()
+        #sheet = ok[1]
+        #nb = ok[2]
         loc = QtCore.QPoint(sheet[0], nb[0])
 
         # On les ajoute dans le dataStream et ces informations pourront etre recuperees par la classe mooringWidget
