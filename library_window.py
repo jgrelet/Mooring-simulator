@@ -112,7 +112,7 @@ class Library_wind(QtGui.QWidget):
             myarea.setViewMode(1)
             groupLayout=QtGui.QVBoxLayout()
             #Creation de la barre de defilement 
-            scrollArea = QtGui.QScrollArea ();
+            scrollArea = QtGui.QScrollArea ()
             groupLayout.addWidget(scrollArea)
             scrolledWidget = QtGui.QWidget()
             #Creation du layout grid contenant toutes les cases du tableau
@@ -129,7 +129,7 @@ class Library_wind(QtGui.QWidget):
                     label.setStyleSheet("QLabel { background-color : white; color : black;border: 1px solid black }")
                     grid.addWidget(label,1+k,l)
             grid.setSpacing(0)
-            scrollArea.setWidget(scrolledWidget);
+            scrollArea.setWidget(scrolledWidget)
             wind.setLayout(groupLayout)
         return myarea
     def creer_objet(self):
