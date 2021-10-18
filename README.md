@@ -68,7 +68,6 @@ Duplicate your environment on other computer or OS, just export it to a YAML fil
 conda env export --no-builds > environment-windows.yml
 ```
 
-
 ## Modifications for original sources
 
 ### Remove Tkinter import
