@@ -48,6 +48,27 @@ conda install -n Mooring  matplotlib reportlab xlrd pyinstaller
 conda deactivate
 ```
 
+## Installation based on an YAML environment file
+
+``` bash
+conda env create -f environment<OS>.yml -n <new_env_name>
+```
+
+example:
+
+``` bash
+conda env create -f environment-windows.yml -n ms1
+```
+
+## Export your environment
+
+Duplicate your environment on other computer or OS, just export it to a YAML file:
+
+```sh
+conda env export --no-builds > environment-windows.yml
+```
+
+
 ## Modifications for original sources
 
 ### Remove Tkinter import
