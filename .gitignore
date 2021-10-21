@@ -156,3 +156,5 @@ dmypy.json
 .~lock*
 .vscode
 Report/Pictures/*.png
+examples/mouillage_luckyscale_2021/
+examples/mouillage_microrio_2021_ATALANTE/
