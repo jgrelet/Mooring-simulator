@@ -15,19 +15,19 @@ Type conda search “^python$”  to see the list of available python versions.
 Now replace the envname with the name you want to give to your virtual environment and replace x.x with the python version you want to use.
 
 ``` bash
-conda create -n envname python=x.x anaconda
+conda create -n envname python=x.x 
 ```
 
-### Create a virtual environment for the project "Mooring"
+### Create a virtual environment for the project "ms1"
 
 ``` bash
-conda create -n Mooring python=2.7.13 anaconda
+conda create -n ms1 python=2.7.13 
 ```
 
 ### Activate your virtual environment
 
 ``` bash
-conda activate Mooring
+conda activate ms1
 ```
 
 ### Install PyQt4
@@ -39,7 +39,7 @@ pip install -i https://pypi.anaconda.org/ales-erjavec/simple pyqt4
 ### Install additional Python packages to a virtual environment
 
 ``` bash
-conda install -n Mooring  matplotlib reportlab xlrd pyinstaller 
+conda install  matplotlib reportlab xlrd pyinstaller 
 ```
 
 ### Deactivate your virtual environment
@@ -95,9 +95,9 @@ Mooring-simulator\dist\main.exe
 If you still want to use py2exe with the setup.py file, you have to install a version of py2exe compatible with python 2.7.
 
 ``` bash
-conda install -n Mooring -c sasview py2exe
+conda install -n ms1 -c sasview py2exe
 ```
 
 ## Compilation under Python3 and Qt5 (work under progress)
 
-Swith to the following branch Python3-Qt5 under development will be based on Python > 3.7.x and Qt5.
+Switch to the following repository https://github.com/jgrelet/Mooring-simulator-v2 under development will be based on Python > 3.8.x and PyQt5.
