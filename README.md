@@ -94,12 +94,6 @@ Mooring-simulator\dist\main.exe
 
 If you still want to use py2exe with the setup.py file, you have to install a version of py2exe compatible with python 2.7.
 
-## Example
-
-![image](https://user-images.githubusercontent.com/1359799/152135588-8352446f-7f60-4823-ad1c-93a27c48761e.png)
-![image](https://user-images.githubusercontent.com/1359799/152135713-4d0fafc5-0989-4018-b3c0-295183c0e63c.png)
-
-
 ``` bash
 conda install -n ms1 -c sasview py2exe
 ```
@@ -107,3 +101,9 @@ conda install -n ms1 -c sasview py2exe
 ## Compilation under Python3 and Qt5 (work under progress)
 
 Switch to the following repository https://github.com/jgrelet/Mooring-simulator-v2 under development will be based on Python > 3.8.x and PyQt5.
+
+## Example
+
+![image](https://user-images.githubusercontent.com/1359799/152135588-8352446f-7f60-4823-ad1c-93a27c48761e.png)
+![image](https://user-images.githubusercontent.com/1359799/152135713-4d0fafc5-0989-4018-b3c0-295183c0e63c.png)
+
